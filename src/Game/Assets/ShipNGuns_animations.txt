@@ -1,0 +1,28 @@
+:animation move_left
+:sprite_sheet ShipNGunsSpriteSheet
+:size 64 64
+:fps 15
+
+:frame_keys 2
+
+player-red-move-left-01
+player-red-move-left-02
+
+:animation move_right
+:sprite_sheet ShipNGunsSpriteSheet
+:size 64 64
+:fps 15
+
+:frame_keys 2
+
+player-red-move-right-01
+player-red-move-right-02
+
+:animation ship_idle
+:sprite_sheet ShipNGunsSpriteSheet
+:size 64 64
+:fps 15
+
+:frame_keys 1
+
+player-red-idle

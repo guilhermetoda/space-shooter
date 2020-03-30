@@ -1,0 +1,734 @@
+:sprite
+:key bullets_laser_large
+:xPos 145
+:yPos 30
+:width 9
+:height 29
+
+:sprite
+:key bullets_laser_medium
+:xPos 178
+:yPos 1
+:width 8
+:height 23
+
+:sprite
+:key Bullets-Laser_Small
+:xPos 108
+:yPos 1
+:width 7
+:height 19
+
+:sprite
+:key Bullets-Minigun_Large
+:xPos 49
+:yPos 30
+:width 9
+:height 28
+
+:sprite
+:key Bullets-Minigun_Medium
+:xPos 117
+:yPos 1
+:width 10
+:height 21
+
+:sprite
+:key Bullets-Minigun_Small
+:xPos 98
+:yPos 1
+:width 8
+:height 17
+
+:sprite
+:key Bullets-Plasma_Large
+:xPos 456
+:yPos 30
+:width 10
+:height 31
+
+:sprite
+:key Bullets-Plasma_Medium
+:xPos 466
+:yPos 1
+:width 9
+:height 27
+
+:sprite
+:key Bullets-Plasma_Small
+:xPos 188
+:yPos 1
+:width 8
+:height 24
+
+:sprite
+:key Bullets-Proton_Large
+:xPos 48
+:yPos 1
+:width 14
+:height 13
+
+:sprite
+:key Bullets-Proton_Medium
+:xPos 10
+:yPos 1
+:width 10
+:height 10
+
+:sprite
+:key Bullets-Proton_Small
+:xPos 1
+:yPos 1
+:width 7
+:height 7
+
+:sprite
+:key Enemy_01-Enemy01_Green_Frame_1
+:xPos 131
+:yPos 224
+:width 64
+:height 55
+
+:sprite
+:key Enemy_01-Enemy01_Green_Frame_2
+:xPos 154
+:yPos 111
+:width 63
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Green_Frame_3
+:xPos 219
+:yPos 111
+:width 60
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Red_Frame_1
+:xPos 320
+:yPos 167
+:width 64
+:height 55
+
+:sprite
+:key Enemy_01-Enemy01_Red_Frame_2
+:xPos 343
+:yPos 111
+:width 63
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Red_Frame_3
+:xPos 1
+:yPos 167
+:width 60
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Shadow_Frame_1
+:xPos 282
+:yPos 282
+:width 64
+:height 56
+
+:sprite
+:key Enemy_01-Enemy01_Shadow_Frame_2
+:xPos 408
+:yPos 111
+:width 63
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Shadow_Frame_3
+:xPos 281
+:yPos 111
+:width 60
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Teal_Frame_1
+:xPos 263
+:yPos 224
+:width 64
+:height 55
+
+:sprite
+:key Enemy_01-Enemy01_Teal_Frame_2
+:xPos 125
+:yPos 167
+:width 63
+:height 54
+
+:sprite
+:key Enemy_01-Enemy01_Teal_Frame_3
+:xPos 63
+:yPos 167
+:width 60
+:height 54
+
+:sprite
+:key Enemy_02-Enemy02_Shadow_Frame_1
+:xPos 329
+:yPos 224
+:width 64
+:height 56
+
+:sprite
+:key Enemy_02-Enemy02_Shadow_Frame_2
+:xPos 348
+:yPos 282
+:width 62
+:height 56
+
+:sprite
+:key Enemy_02-Enemy02_Shadow_Frame_3
+:xPos 113
+:yPos 282
+:width 54
+:height 56
+
+:sprite
+:key Enemy_02-Enemy02_Teal_Frame_1
+:xPos 254
+:yPos 167
+:width 64
+:height 55
+
+:sprite
+:key Enemy_02-Enemy02_Teal_Frame_2
+:xPos 190
+:yPos 167
+:width 62
+:height 55
+
+:sprite
+:key Enemy_02-Enemy02_Teal_Frame_3
+:xPos 57
+:yPos 282
+:width 54
+:height 56
+
+:sprite
+:key Enemy_02-Enemy02Green_Frame_1
+:xPos 1
+:yPos 224
+:width 64
+:height 55
+
+:sprite
+:key Enemy_02-Enemy02Green_Frame_2
+:xPos 386
+:yPos 167
+:width 62
+:height 55
+
+:sprite
+:key Enemy_02-Enemy02Green_Frame_3
+:xPos 1
+:yPos 282
+:width 54
+:height 56
+
+:sprite
+:key Enemy_02-Enemy02Red_Frame_1
+:xPos 197
+:yPos 224
+:width 64
+:height 55
+
+:sprite
+:key Enemy_02-Enemy02Red_Frame_2
+:xPos 67
+:yPos 224
+:width 62
+:height 55
+
+:sprite
+:key Enemy_02-Enemy02Red_Frame_3
+:xPos 169
+:yPos 282
+:width 54
+:height 56
+
+:sprite
+:key Exhaust-Exhaust_Frame_01
+:xPos 121
+:yPos 30
+:width 22
+:height 29
+
+:sprite
+:key Exhaust-Exhaust_Frame_02
+:xPos 468
+:yPos 30
+:width 23
+:height 31
+
+:sprite
+:key Exhaust-Exhaust_Frame_03
+:xPos 449
+:yPos 1
+:width 15
+:height 26
+
+:sprite
+:key Exhaust-Exhaust_Frame_04
+:xPos 1
+:yPos 30
+:width 22
+:height 28
+
+:sprite
+:key Exhaust-Exhaust_Frame_05
+:xPos 25
+:yPos 30
+:width 22
+:height 28
+
+:sprite
+:key Exhaust-Exhaust_Frame_06
+:xPos 198
+:yPos 1
+:width 15
+:height 24
+
+:sprite
+:key Explosions-Explosion01_Frame_01
+:xPos 22
+:yPos 1
+:width 11
+:height 11
+
+:sprite
+:key Explosions-Explosion01_Frame_02
+:xPos 64
+:yPos 1
+:width 15
+:height 15
+
+:sprite
+:key Explosions-Explosion01_Frame_03
+:xPos 153
+:yPos 1
+:width 23
+:height 23
+
+:sprite
+:key Explosions-Explosion01_Frame_04
+:xPos 90
+:yPos 30
+:width 29
+:height 28
+
+:sprite
+:key Explosions-Explosion01_Frame_05
+:xPos 165
+:yPos 63
+:width 35
+:height 36
+
+:sprite
+:key Explosions-Explosion01_Frame_06
+:xPos 251
+:yPos 63
+:width 42
+:height 41
+
+:sprite
+:key Explosions-Explosion01_Frame_07
+:xPos 426
+:yPos 63
+:width 46
+:height 46
+
+:sprite
+:key Explosions-Explosion01_Frame_08
+:xPos 102
+:yPos 111
+:width 50
+:height 50
+
+:sprite
+:key Explosions-Explosion01_Frame_09
+:xPos 395
+:yPos 224
+:width 56
+:height 56
+
+:sprite
+:key Explosions-Explosion02_Frame_01
+:xPos 35
+:yPos 1
+:width 11
+:height 11
+
+:sprite
+:key Explosions-Explosion02_Frame_02
+:xPos 81
+:yPos 1
+:width 15
+:height 15
+
+:sprite
+:key Explosions-Explosion02_Frame_03
+:xPos 129
+:yPos 1
+:width 22
+:height 23
+
+:sprite
+:key Explosions-Explosion02_Frame_04
+:xPos 60
+:yPos 30
+:width 28
+:height 28
+
+:sprite
+:key Explosions-Explosion02_Frame_05
+:xPos 202
+:yPos 63
+:width 36
+:height 36
+
+:sprite
+:key Explosions-Explosion02_Frame_06
+:xPos 338
+:yPos 63
+:width 42
+:height 41
+
+:sprite
+:key Explosions-Explosion02_Frame_07
+:xPos 1
+:yPos 111
+:width 46
+:height 46
+
+:sprite
+:key Explosions-Explosion02_Frame_08
+:xPos 49
+:yPos 111
+:width 51
+:height 50
+
+:sprite
+:key Explosions-Explosion02_Frame_09
+:xPos 225
+:yPos 282
+:width 55
+:height 56
+
+:sprite
+:key GunTurret-GunTurret_ExampleGun
+:xPos 240
+:yPos 63
+:width 9
+:height 39
+
+:sprite
+:key GunTurret-GunTurret_Green
+:xPos 124
+:yPos 63
+:width 39
+:height 34
+
+:sprite
+:key GunTurret-GunTurret_Orange
+:xPos 83
+:yPos 63
+:width 39
+:height 34
+
+:sprite
+:key GunTurret-GunTurret_Red
+:xPos 42
+:yPos 63
+:width 39
+:height 34
+
+:sprite
+:key GunTurret-GunTurret_Teal
+:xPos 1
+:yPos 63
+:width 39
+:height 34
+
+:sprite
+:key GunTurret-GunTurretMount
+:xPos 103
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key Mine_01-Cover_Blue
+:xPos 215
+:yPos 1
+:width 37
+:height 25
+
+:sprite
+:key Mine_01-Cover_Green
+:xPos 410
+:yPos 1
+:width 37
+:height 25
+
+:sprite
+:key Mine_01-Cover_Red
+:xPos 254
+:yPos 1
+:width 37
+:height 25
+
+:sprite
+:key Mine_01-Rotor
+:xPos 382
+:yPos 63
+:width 42
+:height 42
+
+:sprite
+:key Mine_02-Cover_Blue
+:xPos 332
+:yPos 1
+:width 37
+:height 25
+
+:sprite
+:key Mine_02-Cover_Green
+:xPos 293
+:yPos 1
+:width 37
+:height 25
+
+:sprite
+:key Mine_02-Cover_Red
+:xPos 371
+:yPos 1
+:width 37
+:height 25
+
+:sprite
+:key Mine_02-Rotor
+:xPos 295
+:yPos 63
+:width 41
+:height 41
+
+:sprite
+:key PlatformTiles-Platform_01
+:xPos 37
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_02
+:xPos 433
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_03
+:xPos 133
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_04
+:xPos 331
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_Corner
+:xPos 265
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_Corner_NorthEast
+:xPos 397
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_Corner_NorthWest
+:xPos 199
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_Corner_SouthEast
+:xPos 67
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_Corner_SouthWest
+:xPos 1
+:yPos 476
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-Platform_Edge
+:xPos 1
+:yPos 410
+:width 34
+:height 64
+
+:sprite
+:key PlatformTiles-PlatformCorner_NorthEast
+:xPos 301
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-PlatformCorner_NorthWest
+:xPos 235
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-PlatformCorner_SouthEast
+:xPos 367
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key PlatformTiles-PlatformCorner_SouthWest
+:xPos 169
+:yPos 410
+:width 64
+:height 64
+
+:sprite
+:key Player-PlayerBlue_Frame_01
+:xPos 415
+:yPos 345
+:width 60
+:height 63
+
+:sprite
+:key Player-PlayerBlue_Frame_02
+:xPos 56
+:yPos 345
+:width 58
+:height 62
+
+:sprite
+:key Player-PlayerBlue_Frame_03
+:xPos 412
+:yPos 282
+:width 53
+:height 61
+
+:sprite
+:key player-red-idle
+:xPos 291
+:yPos 345
+:width 60
+:height 63
+
+:sprite
+:key player-red-move-left-01
+:xPos 116
+:yPos 345
+:width 58
+:height 62
+
+:sprite
+:key player-red-move-left-02
+:xPos 236
+:yPos 345
+:width 53
+:height 62
+
+:sprite
+:key player-red-move-right-01
+:xPos 180
+:yPos 409
+:width 58
+:height 62
+
+:sprite
+:key player-red-move-right-02
+:xPos 56
+:yPos 409
+:width 53
+:height 62
+
+:sprite
+:key Player-PlayerShadow_Frame_01
+:xPos 353
+:yPos 345
+:width 60
+:height 63
+
+:sprite
+:key Player-PlayerShadow_Frame_02
+:xPos 176
+:yPos 345
+:width 58
+:height 62
+
+:sprite
+:key Player-PlayerShadow_Frame_03
+:xPos 1
+:yPos 345
+:width 53
+:height 61
+
+:sprite
+:key Powerups-Powerup_Ammo
+:xPos 306
+:yPos 30
+:width 48
+:height 30
+
+:sprite
+:key Powerups-Powerup_Energy
+:xPos 256
+:yPos 30
+:width 48
+:height 30
+
+:sprite
+:key Powerups-Powerup_Health
+:xPos 206
+:yPos 30
+:width 48
+:height 30
+
+:sprite
+:key Powerups-Powerup_Rockets
+:xPos 406
+:yPos 30
+:width 48
+:height 30
+
+:sprite
+:key Powerups-Powerup_Shadow
+:xPos 356
+:yPos 30
+:width 48
+:height 30
+
+:sprite
+:key Powerups-Powerup_Shields
+:xPos 156
+:yPos 30
+:width 48
+:height 30
