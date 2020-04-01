@@ -13,7 +13,7 @@
 
 #include "Projectile.h"
 
-ProjectilePool ShooterGame::mProjectilePool;
+Pool<Projectile> ShooterGame::mProjectilePool; 
 
 void ShooterGame::Init(GameController& controller)
 {

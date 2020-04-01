@@ -14,8 +14,8 @@
 #include "BMPImage.h"
 #include "PlayerShip.h"
 #include "GameController.h"
-#include "ProjectilePool.h"
 #include "Projectile.h"
+#include "Pool.h"
 
 class ShooterGame : public Game
 {
@@ -27,7 +27,7 @@ public:
     
     void Shoot(InputState state);
     
-    static ProjectilePool mProjectilePool;
+    static Pool<Projectile> mProjectilePool;
     
 private:
     void HandleGameControllerState(InputState state, MovementDirections direction);
@@ -35,7 +35,7 @@ private:
     SpriteSheet mShipSpriteSheet;
     PlayerShip mPlayer;
     
-    
+    Pool<Actor> mActorsPool;
     
     // TEMP
     void Shoot();

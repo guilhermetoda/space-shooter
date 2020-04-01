@@ -35,8 +35,9 @@ public:
     inline const Vec2D GetPosition() const {  return mSprite.GetBoundingBox().GetTopLeftPoint(); }
     
     void Shoot();
-protected:
+    
     AnimatedSprite mSprite;
+protected:
     Vec2D mFowardDirection;
 private:
     Vec2D mMovementSpeed;

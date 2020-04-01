@@ -14,8 +14,11 @@
 #include "SpriteSheet.h"
 #include "AARectangle.h"
 #include <string.h>
+#include "GameUtils.h"
 
 class Screen;
+class Actor;
+
 
 class Projectile
 {
@@ -26,6 +29,8 @@ public:
     virtual void Draw(Screen& screen);
     
     inline const bool IsActive() const{ return mActive; }
+    
+    bool const HasCollided(const Actor& actor) const;
 private:
     const SpriteSheet* mnoptrSpriteSheet;
     std::string mSpriteName;
@@ -40,6 +45,8 @@ private:
     float mTimeAlive;
     
     bool mActive;
+    ProjectileOrigin mOrigin;
+    
     
     friend class Weapon;
 };

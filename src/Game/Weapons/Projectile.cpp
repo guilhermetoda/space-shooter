@@ -8,11 +8,22 @@
 
 #include "Projectile.h"
 #include "screen.h"
+#include "Actor.h"
 
 Projectile::Projectile(): mnoptrSpriteSheet(nullptr), mActive(false)
 {
     
 }
+
+bool const Projectile::HasCollided(const Actor& actor) const
+{
+    if (mBBox.Intersects(actor.mSprite.GetBoundingBox()))
+    {
+        return true;
+    }
+    return false;
+}
+
 
 void Projectile::Init(const SpriteSheet* noptrSpriteSheet, const std::string& spriteName, const Vec2D& direction, float speed, const Vec2D& initialPosition, unsigned int width, unsigned int height)
 {
@@ -26,6 +37,7 @@ void Projectile::Init(const SpriteSheet* noptrSpriteSheet, const std::string& sp
     mLifeTime = 5.0f;
     mSpriteName = spriteName;
     mActive = true;
+    mOrigin = PLAYER;
 }
 
 void Projectile::Update(uint32_t dt)

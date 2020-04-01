@@ -24,7 +24,7 @@ void Actor::Init(const SpriteSheet& sprite, const std::string& animationsPath, c
 
 void Actor::Update(uint32_t dt)
 {
-    
+ 
     if (mIsMoving)
     {
         Vec2D delta = Vec2D::Zero;

@@ -9,6 +9,8 @@
 #include "Weapon.h"
 #include "Utils.h"
 #include "ShooterGame.h"
+template class Pool<Projectile>;
+
 
 Weapon::Weapon(): mRoundsPerMinute(0.0f), mFiringNow(false), mFireCooldown(0.0f), mWeaponFireStartPosition(Vec2D::Zero)
 {
@@ -40,5 +42,6 @@ void Weapon::Update(uint32_t dt, const Vec2D& weaponPosition)
 void Weapon::Fire()
 {
     Projectile& projectile = ShooterGame::mProjectilePool.AddToPool();
+    
     projectile.Init(mProjectile.mnoptrSpriteSheet,mProjectile.mSpriteName, mProjectile.mFoward, mProjectile.mSpeed, mWeaponFireStartPosition, mProjectile.mWidth, mProjectile.mHeight);
 }

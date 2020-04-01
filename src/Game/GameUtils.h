@@ -17,4 +17,9 @@ enum MovementDirections {
     DIRECTION_RIGHT
 };
 
+enum ProjectileOrigin {
+    PLAYER = 0,
+    ENEMY
+};
+
 #endif /* GameUtils_h */
