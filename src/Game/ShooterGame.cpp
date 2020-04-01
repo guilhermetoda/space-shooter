@@ -11,6 +11,10 @@
 #include "Vec2D.h"
 #include "SpriteSheet.h"
 
+#include "Projectile.h"
+
+ProjectilePool ShooterGame::mProjectilePool;
+
 void ShooterGame::Init(GameController& controller)
 {
     //mBackgroundImage.Load("SpaceBackground");
@@ -18,7 +22,8 @@ void ShooterGame::Init(GameController& controller)
     mShipSpriteSheet.Load("ShipNGunsSpritesheet");
     
     mPlayer.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt",  Vec2D(100, 100), Vec2D(1.5f,2.2f));
-    
+    AARectangle gameBoundary = { Vec2D::Zero, App::Singleton().Width(), App::Singleton().Height() };
+    mPlayer.SetBoundary(gameBoundary);
     
     //Controls
     
@@ -54,10 +59,23 @@ void ShooterGame::Init(GameController& controller)
         };
     controller.AddInputActionForKey(upAction);
     
+    ButtonAction shootAction;
+    shootAction.key = GameController::ActionKey();
+    shootAction.action = [this](uint32_t dt, InputState state)
+        {
+            Shoot(state);
+        };
+    controller.AddInputActionForKey(shootAction);
+    
 }
 void ShooterGame::Update(uint32_t dt)
 {
     mPlayer.Update(dt);
+    for (int i = 0; i < mProjectilePool.Size(); ++i)
+    {
+        mProjectilePool.mPool[i].Update(dt);
+    }
+    
 }
 void ShooterGame::Draw(Screen& screen)
 {
@@ -65,13 +83,15 @@ void ShooterGame::Draw(Screen& screen)
     Sprite bgSprite;
     bgSprite.width = mBackgroundImage.GetWidth();
     bgSprite.height = mBackgroundImage.GetHeight();
-    std::cout << bgSprite.width  << std::endl;
-    std::cout << bgSprite.height << std::endl;
     
     screen.Draw(mBackgroundImage, bgSprite, Vec2D(0,i/100), Color::White());
     ++i;
     
     mPlayer.Draw(screen);
+    for (int i = 0; i < mProjectilePool.Size(); ++i)
+    {
+        mProjectilePool.mPool[i].Draw(screen);
+    }
     //screen.Draw(mBackgroundSpriteSheet, "space", Vec2D(0,0), Color::White());
 }
 const std::string& ShooterGame::GetName() const
@@ -120,5 +140,18 @@ void ShooterGame::HandleGameControllerState(InputState state, MovementDirections
             mPlayer.SetMovement(direction, true);
             mPlayer.SetVelocity(Vec2D(mPlayer.GetVelocity().GetX(),0));
         }
+    }
+}
+
+//temp
+void ShooterGame::Shoot(InputState state)
+{
+    if(GameController::IsPressed(state))
+    {
+        mPlayer.Fire();
+    }
+    else if(GameController::IsReleased(state))
+    {
+        mPlayer.StopFire();
     }
 }

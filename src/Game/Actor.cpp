@@ -8,6 +8,7 @@
 
 #include "Actor.h"
 #include "Utils.h"
+#include "Projectile.h"
 
 void Actor::Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed)
 {
@@ -26,7 +27,6 @@ void Actor::Update(uint32_t dt)
     
     if (mIsMoving)
     {
-        int dx = 0, dy = 0;
         Vec2D delta = Vec2D::Zero;
 
         delta = Vec2D(mVelocity.GetX() * mMovementSpeed.GetX(), mVelocity.GetY() * mMovementSpeed.GetY());
@@ -54,4 +54,9 @@ void Actor::Stop()
 void Actor::SetAnimation(const std::string& animationName, bool looped)
 {
     mSprite.SetAnimation(animationName, looped);
+}
+
+void Actor::Shoot()
+{
+    
 }

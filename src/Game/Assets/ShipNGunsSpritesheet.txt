@@ -13,7 +13,7 @@
 :height 23
 
 :sprite
-:key Bullets-Laser_Small
+:key bullets_laser_small
 :xPos 108
 :yPos 1
 :width 7

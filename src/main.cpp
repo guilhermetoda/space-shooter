@@ -12,7 +12,7 @@
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 600;
-const int MAGNIFICATION = 2;
+const int MAGNIFICATION = 1;
 
 
 int main()

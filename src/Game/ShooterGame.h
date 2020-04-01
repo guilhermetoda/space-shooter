@@ -12,9 +12,10 @@
 #include "Game.h"
 #include "SpriteSheet.h"
 #include "BMPImage.h"
-#include "Actor.h"
+#include "PlayerShip.h"
 #include "GameController.h"
-
+#include "ProjectilePool.h"
+#include "Projectile.h"
 
 class ShooterGame : public Game
 {
@@ -24,15 +25,21 @@ public:
     virtual void Draw(Screen& screen);
     virtual const std::string& GetName() const;
     
+    void Shoot(InputState state);
+    
+    static ProjectilePool mProjectilePool;
+    
 private:
     void HandleGameControllerState(InputState state, MovementDirections direction);
     
     SpriteSheet mShipSpriteSheet;
-    Actor mPlayer;
+    PlayerShip mPlayer;
+    
     
     
     // TEMP
-    
+    void Shoot();
+    Projectile mProjectile;
     BMPImage mBackgroundImage;
     int i = 0;
 };

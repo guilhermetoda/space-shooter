@@ -12,6 +12,7 @@
 #include "GameUtils.h"
 #include "AnimatedSprite.h"
 #include "Vec2D.h"
+#include "AARectangle.h"
 
 class Actor
 {
@@ -27,12 +28,23 @@ public:
     
     inline void SetMovement(MovementDirections direction, bool isMoving) { mIsMoving = isMoving; }
     void SetAnimation(const std::string& animationName, bool looped);
-private:
+    
+    void SetFowardDirection(const Vec2D& foward) { mFowardDirection = foward; }
+    inline const Vec2D GetFowardDirection() const { return mFowardDirection; }
+    
+    inline const Vec2D GetPosition() const {  return mSprite.GetBoundingBox().GetTopLeftPoint(); }
+    
+    void Shoot();
+protected:
     AnimatedSprite mSprite;
+    Vec2D mFowardDirection;
+private:
     Vec2D mMovementSpeed;
     Vec2D mVelocity;
     Vec2D mDelta;
     bool mIsMoving;
+    
+    SpriteSheet *mnoptrSpriteSheet;
 };
 
 #endif /* Actor_h */
