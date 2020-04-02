@@ -26,3 +26,43 @@ player-red-move-right-02
 :frame_keys 1
 
 player-red-idle
+
+:animation enemy_teal_idle
+:sprite_sheet ShipNGunsSpriteSheet
+:size 64 64
+:fps 15
+
+:frame_keys 1
+
+enemy_02_teal_idle
+
+:animation explosion_red
+:sprite_sheet ShipNGunsSpriteSheet
+:size 64 64
+:fps 15
+
+:frame_keys 9
+
+explosions01_frame_01
+explosions01_frame_02
+explosions01_frame_03
+explosions01_frame_04
+explosions01_frame_05
+explosions01_frame_06
+explosions01_frame_07
+explosions01_frame_08
+explosions01_frame_09
+
+:animation covid19
+:sprite_sheet ShipNGunsSpriteSheet
+:size 32 32
+:fps 5
+
+:frame_keys 5
+
+covid19_3
+covid19_4
+covid19_7
+covid19_8
+covid19_9
+

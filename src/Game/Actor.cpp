@@ -10,16 +10,20 @@
 #include "Utils.h"
 #include "Projectile.h"
 
-void Actor::Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed)
+void Actor::Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed, bool hasExplosion, const std::string& explosionSpriteName)
 {
     mSprite.Init(animationsPath, sprite);
     mSprite.SetPosition(initialPos);
     mVelocity = Vec2D::Zero;
     mMovementSpeed = speed;
     
-    //temp code
-    mSprite.SetAnimation("ship_idle", true);
     
+    //mExplosionSprite.Init(animationsPath, sprite);
+    mExplosionSpriteName = explosionSpriteName;
+    mHasExplosion = hasExplosion;
+    
+    mAlive = true;
+    mActive = true;
 }
 
 void Actor::Update(uint32_t dt)
@@ -35,12 +39,22 @@ void Actor::Update(uint32_t dt)
         mSprite.MoveBy(delta);
         
     }
+    if (IsActive() && !IsAlive())
+    {
+        if (mSprite.IsFinishedPlayingAnimation())
+        {
+            mActive = false;
+        }
+    }
     mSprite.Update(dt);
 }
 
 void Actor::Draw(Screen& screen)
 {
-    mSprite.Draw(screen);
+    if (IsActive())
+    {
+        mSprite.Draw(screen);
+    }
 }
 
 
@@ -55,6 +69,15 @@ void Actor::SetAnimation(const std::string& animationName, bool looped)
 {
     mSprite.SetAnimation(animationName, looped);
 }
+
+const Vec2D Actor::GetMiddlePosition() const
+{
+    Vec2D topLeftPosition = GetPosition();
+    topLeftPosition.SetX(topLeftPosition.GetX() + (mSprite.Size().GetX() / 2) - 5);
+    topLeftPosition.SetY(topLeftPosition.GetY() - 5);
+    return topLeftPosition;
+}
+
 
 void Actor::Shoot()
 {

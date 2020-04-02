@@ -32,7 +32,7 @@ bool AnimationPlayer::Play(const std::string& animationName, bool looped)
     }
     if (found)
     {
-        mIsPlaying =true;
+        mIsPlaying = true;
         mTime = 0;
         mFrame = 0;
         mLooped = looped;
@@ -69,7 +69,7 @@ void AnimationPlayer::Update(uint32_t dt)
             {
                 ++mFrame;
             }
-            else if ((mFrame + 1 > mAnimations[mCurrentAnimation].NumFrames()) && mLooped)
+            else if ((mFrame + 1 >= mAnimations[mCurrentAnimation].NumFrames()) && mLooped)
             {
                 mFrame = 0;
             }

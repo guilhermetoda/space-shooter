@@ -59,7 +59,7 @@ void Projectile::Update(uint32_t dt)
 
 void Projectile::Draw(Screen& screen)
 {
-    if (mnoptrSpriteSheet)
+    if (mnoptrSpriteSheet && mActive)
     {
         screen.Draw(*mnoptrSpriteSheet, mSpriteName, mBBox.GetTopLeftPoint());
     }

@@ -16,6 +16,7 @@
 #include "GameController.h"
 #include "Projectile.h"
 #include "Pool.h"
+#include "Enemy.h"
 
 class ShooterGame : public Game
 {
@@ -35,7 +36,7 @@ private:
     SpriteSheet mShipSpriteSheet;
     PlayerShip mPlayer;
     
-    Pool<Actor> mActorsPool;
+    Pool<Enemy> mActorsPool;
     
     // TEMP
     void Shoot();

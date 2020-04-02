@@ -91,6 +91,7 @@ Color FileCommandLoader::ReadColor(const ParseFuncParams& params)
 {
     size_t nextSpacePos = params.line.find_first_of(" ", params.dilimitPos+1);
     int r = std::stoi(params.line.substr(params.dilimitPos, (nextSpacePos - params.dilimitPos)));
+
     size_t lastSpacePos = nextSpacePos;
     nextSpacePos = params.line.find_first_of(" ", lastSpacePos + 1);
     int g = std::stoi(params.line.substr(lastSpacePos + 1, (nextSpacePos - lastSpacePos)));

@@ -9,12 +9,12 @@
 #include "PlayerShip.h"
 #include "NormalBlaster.h"
 
-void PlayerShip::Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed)
+void PlayerShip::Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed, bool hasExplosion, const std::string& explosionSpriteName)
 {
     Actor::Init(sprite, animationsPath, initialPos, speed);
     Vec2D playerFoward = { 0, 1 };
     SetFowardDirection(playerFoward);
-    
+    mSprite.SetAnimation("ship_idle", true);
     
     //Setting Normal Weapon
     std::unique_ptr<NormalBlaster> blasterPtr = std::make_unique<NormalBlaster>();
@@ -55,7 +55,7 @@ void PlayerShip::Update(uint32_t dt)
         }
     }
     Actor::Update(dt);
-    mCurrentWeapon->Update(dt, GetPosition());
+    mCurrentWeapon->Update(dt, GetMiddlePosition());
 }
 
 void PlayerShip::Fire()

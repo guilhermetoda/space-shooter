@@ -29,6 +29,7 @@ public:
     virtual void Draw(Screen& screen);
     
     inline const bool IsActive() const{ return mActive; }
+    inline void DestroyProjectile() { mActive = false; }
     
     bool const HasCollided(const Actor& actor) const;
 private:

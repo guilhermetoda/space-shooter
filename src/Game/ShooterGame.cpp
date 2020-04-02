@@ -21,9 +21,13 @@ void ShooterGame::Init(GameController& controller)
     mBackgroundImage.LoadImageFromFile(App::Singleton().GetBasePath()+"Assets/SpaceClean.bmp");
     mShipSpriteSheet.Load("ShipNGunsSpritesheet");
     
-    mPlayer.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt",  Vec2D(100, 100), Vec2D(1.5f,2.2f));
+    mPlayer.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt",  Vec2D(100, 600), Vec2D(1.5f,2.2f));
     AARectangle gameBoundary = { Vec2D::Zero, App::Singleton().Width(), App::Singleton().Height() };
     mPlayer.SetBoundary(gameBoundary);
+    
+    Enemy& enemy = ShooterGame::mActorsPool.AddToPool();
+    enemy.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt", Vec2D(50, 10),  Vec2D(0.1f, 0.2f), true, "explosion_red");
+    enemy.SetAnimation("covid19", true);
     
     //Controls
     
@@ -67,6 +71,8 @@ void ShooterGame::Init(GameController& controller)
         };
     controller.AddInputActionForKey(shootAction);
     
+    
+    
 }
 void ShooterGame::Update(uint32_t dt)
 {
@@ -76,22 +82,32 @@ void ShooterGame::Update(uint32_t dt)
         mProjectilePool.mPool[i].Update(dt);
     }
     
+    for (int i = 0; i < mActorsPool.Size(); ++i)
+    {
+        mActorsPool.mPool[i].Update(dt);
+    }
 }
 void ShooterGame::Draw(Screen& screen)
 {
-    
+   
     Sprite bgSprite;
     bgSprite.width = mBackgroundImage.GetWidth();
     bgSprite.height = mBackgroundImage.GetHeight();
     
-    screen.Draw(mBackgroundImage, bgSprite, Vec2D(0,i/100), Color::White());
+    screen.Draw(mBackgroundImage, bgSprite, Vec2D(0,i/2), Color::White());
     ++i;
     
-    mPlayer.Draw(screen);
+    
     for (int i = 0; i < mProjectilePool.Size(); ++i)
     {
         mProjectilePool.mPool[i].Draw(screen);
     }
+    
+    for (int i = 0; i < mActorsPool.Size(); ++i)
+    {
+        mActorsPool.mPool[i].Draw(screen);
+    }
+    mPlayer.Draw(screen);
     //screen.Draw(mBackgroundSpriteSheet, "space", Vec2D(0,0), Color::White());
 }
 const std::string& ShooterGame::GetName() const

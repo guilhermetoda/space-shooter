@@ -20,7 +20,7 @@ class Vec2D;
 class PlayerShip : public Actor
 {
 public:
-    virtual void Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed) override;
+    virtual void Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed, bool hasExplosion = false, const std::string& explosionSpriteName = "") override;
     virtual void Update(uint32_t dt) override;
     
     inline void SetBoundary(const AARectangle& boundary) { mBoundary = boundary; }
