@@ -6,4 +6,20 @@
 //  Copyright © 2020 Guilherme Toda. All rights reserved.
 //
 
-#include <stdio.h>
+#include "Collision.h"
+#include "Actor.h"
+#include "ShooterGame.h"
+
+bool Collision::CheckCollisionWithProjectiles(const Actor& actor)
+{
+    for (auto& projectile: ShooterGame::mProjectilePool.mPool)
+    {
+        if (projectile.HasCollided(actor))
+        {
+            projectile.DestroyProjectile();
+            return true;
+        }
+    }
+    return false;
+}
+

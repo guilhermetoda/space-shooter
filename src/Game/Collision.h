@@ -9,5 +9,11 @@
 #ifndef Collision_h
 #define Collision_h
 
+class Actor;
 
+class Collision
+{
+public:
+    static bool CheckCollisionWithProjectiles(const Actor& actor);
+};
 #endif /* Collision_h */
