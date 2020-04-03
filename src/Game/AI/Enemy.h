@@ -23,9 +23,6 @@ public:
     virtual void Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed, bool hasExplosion = false, const std::string& explosionSpriteName = "") override;
     virtual void Update(uint32_t dt) override;
     
-private:
-    bool CheckCollision();
-    //Weapon mCurrentWeapon;
 };
 
 
