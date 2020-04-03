@@ -13,21 +13,19 @@
 
 #include "Projectile.h"
 
+
 Pool<Projectile> ShooterGame::mProjectilePool; 
 
 void ShooterGame::Init(GameController& controller)
 {
+    srand((unsigned)time(0));
     //mBackgroundImage.Load("SpaceBackground");
-    mBackgroundImage.LoadImageFromFile(App::Singleton().GetBasePath()+"Assets/SpaceClean.bmp");
+    mBackgroundImage.Init(App::Singleton().GetBasePath()+"Assets/SpaceClean.bmp");
     mShipSpriteSheet.Load("ShipNGunsSpritesheet");
     
-    mPlayer.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt",  Vec2D(100, 600), Vec2D(1.5f,2.2f));
+    mPlayer.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt",  Vec2D(100, 600), Vec2D(1.5f,1.5f));
     AARectangle gameBoundary = { Vec2D::Zero, App::Singleton().Width(), App::Singleton().Height() };
     mPlayer.SetBoundary(gameBoundary);
-    
-    Enemy& enemy = ShooterGame::mActorsPool.AddToPool();
-    enemy.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt", Vec2D(50, 10),  Vec2D(0.1f, 0.2f), true, "explosion_red");
-    enemy.SetAnimation("covid19", true);
     
     //Controls
     
@@ -76,6 +74,7 @@ void ShooterGame::Init(GameController& controller)
 }
 void ShooterGame::Update(uint32_t dt)
 {
+    mBackgroundImage.Update(dt);
     mPlayer.Update(dt);
     for (int i = 0; i < mProjectilePool.Size(); ++i)
     {
@@ -86,18 +85,22 @@ void ShooterGame::Update(uint32_t dt)
     {
         mActorsPool.mPool[i].Update(dt);
     }
+    
+    if (mSpawnTimer >= mEnemySpawnCooldown)
+    {
+        SpawnEnemy();
+        mSpawnTimer = 0;
+    }
+    else
+    {
+        mSpawnTimer += MsToSec(dt);
+    }
+    
 }
+
 void ShooterGame::Draw(Screen& screen)
 {
-   
-    Sprite bgSprite;
-    bgSprite.width = mBackgroundImage.GetWidth();
-    bgSprite.height = mBackgroundImage.GetHeight();
-    
-    screen.Draw(mBackgroundImage, bgSprite, Vec2D(0,i/2), Color::White());
-    ++i;
-    
-    
+    mBackgroundImage.Draw(screen);
     for (int i = 0; i < mProjectilePool.Size(); ++i)
     {
         mProjectilePool.mPool[i].Draw(screen);
@@ -108,12 +111,27 @@ void ShooterGame::Draw(Screen& screen)
         mActorsPool.mPool[i].Draw(screen);
     }
     mPlayer.Draw(screen);
+    
     //screen.Draw(mBackgroundSpriteSheet, "space", Vec2D(0,0), Color::White());
 }
 const std::string& ShooterGame::GetName() const
 {
-    static std::string title = "Space Shooter... for now";
+    static std::string title = "Kill the COVID-19";
     return title;
+}
+
+void ShooterGame::SpawnEnemy()
+{
+    int randomXPos = rand() % App::Singleton().Width() + 10;
+
+    //Enemy& enemy = ShooterGame::mActorsPool.AddToPool();
+    FollowTarget& enemy = ShooterGame::mActorsPool.AddToPool();
+    //FollowTarget enemy;
+    Vec2D direction =  mPlayer.GetMiddlePosition() - Vec2D(randomXPos, 10);
+    std::cout << direction.Normalize() << std::endl;
+    enemy.Init(mShipSpriteSheet, App::Singleton().GetBasePath()+"Assets/ShipNGuns_animations.txt", Vec2D(randomXPos, 10), direction.Normalize(), true, "explosion_red");
+    enemy.SetActorToFollow(mPlayer);
+    enemy.SetAnimation("covid19", true);
 }
 
 void ShooterGame::HandleGameControllerState(InputState state, MovementDirections direction)
@@ -122,39 +140,41 @@ void ShooterGame::HandleGameControllerState(InputState state, MovementDirections
     {
         if (direction == DIRECTION_LEFT)
         {
-            mPlayer.SetMovement(direction, true);
-            mPlayer.SetVelocity(Vec2D(-1, mPlayer.GetVelocity().GetY()));
+            mPlayer.SetDirection(LEFT_DIR_MASK);
             mPlayer.SetAnimation("move_left", true);
         }
         else if (direction == DIRECTION_RIGHT)
         {
-            mPlayer.SetMovement(direction, true);
-            mPlayer.SetVelocity(Vec2D(1,mPlayer.GetVelocity().GetY()));
+            mPlayer.SetDirection(RIGHT_DIR_MASK);
             mPlayer.SetAnimation("move_right", true);
         }
         else if (direction == DIRECTION_UP)
         {
-            mPlayer.SetMovement(direction, true);
+            mPlayer.SetDirection(UP_DIR_MASK);
             mPlayer.SetVelocity(Vec2D(mPlayer.GetVelocity().GetX(),-1));
         }
         else if (direction == DIRECTION_DOWN)
         {
-            mPlayer.SetMovement(direction, true);
+            mPlayer.SetDirection(DOWN_DIR_MASK);
             mPlayer.SetVelocity(Vec2D(mPlayer.GetVelocity().GetX(),1));
         }
     }
     else if(GameController::IsReleased(state))
     {
-        if ((direction == DIRECTION_LEFT) || (direction == DIRECTION_RIGHT))
+        if (direction == DIRECTION_LEFT)
         {
-            mPlayer.SetAnimation("ship_idle", true);
-            mPlayer.SetMovement(direction, true);
-            mPlayer.SetVelocity(Vec2D(0, mPlayer.GetVelocity().GetY()));
+            mPlayer.UnsetDirection(LEFT_DIR_MASK);
         }
-        else if ((direction == DIRECTION_UP) || (direction == DIRECTION_DOWN))
+        else if (direction == DIRECTION_RIGHT)
         {
-            mPlayer.SetMovement(direction, true);
-            mPlayer.SetVelocity(Vec2D(mPlayer.GetVelocity().GetX(),0));
+            mPlayer.UnsetDirection(RIGHT_DIR_MASK);
+        }
+        else if (direction == DIRECTION_UP)
+        {
+            mPlayer.UnsetDirection(UP_DIR_MASK);
+        }
+        else if (direction == DIRECTION_DOWN) {
+            mPlayer.UnsetDirection(DOWN_DIR_MASK);
         }
     }
 }

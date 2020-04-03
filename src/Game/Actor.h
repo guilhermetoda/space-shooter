@@ -26,7 +26,8 @@ public:
     inline void SetVelocity(Vec2D newVelocity) { mVelocity =  newVelocity; }
     inline const Vec2D GetVelocity() const { return mVelocity; }
     
-    inline void SetMovement(MovementDirections direction, bool isMoving) { mIsMoving = isMoving; }
+    inline void SetMovementDirection(const Vec2D& movementDirection) { mMovementDirection = movementDirection; }
+    inline void SetMoving(bool moving) { mIsMoving = moving; }
     void SetAnimation(const std::string& animationName, bool looped);
     
     void SetFowardDirection(const Vec2D& foward) { mFowardDirection = foward; }
@@ -38,15 +39,15 @@ public:
     inline const bool HasExplosion() const { return mHasExplosion; }
     
     void KillActor() { mAlive = false; }
-    
     void Shoot();
+    
     
     AnimatedSprite mSprite;
 protected:
     Vec2D mFowardDirection;
     std::string mExplosionSpriteName;
 private:
-    Vec2D mMovementSpeed;
+    Vec2D mMovementDirection;
     Vec2D mVelocity;
     Vec2D mDelta;
     bool mIsMoving;

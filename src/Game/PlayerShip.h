@@ -13,6 +13,13 @@
 #include "Weapon.h"
 #include <memory>
 
+/* Player Movement is now using bitwise operators
+   one bit for each direction,
+   example: 1000 (8) goes up
+            0100 (4) goes down
+            0110 (6) goes left and down
+ */
+
 class SpriteSheet;
 class Screen;
 class Vec2D;
@@ -25,6 +32,10 @@ public:
     
     inline void SetBoundary(const AARectangle& boundary) { mBoundary = boundary; }
     inline AARectangle GetBoundary() { return mBoundary; }
+    void SetDirection(unsigned char newDirection);
+    inline void UnsetDirection(unsigned char unsettedDirection) { mPlayerDirectionBits &= ~unsettedDirection; }
+        
+    const Vec2D GetDirections() const;
     
     void Fire();
     void StopFire();
@@ -32,6 +43,7 @@ public:
 private:
     AARectangle mBoundary;
     std::unique_ptr<Weapon> mCurrentWeapon;
+    unsigned char mPlayerDirectionBits;
 };
 
 #endif /* PlayerShip_h */

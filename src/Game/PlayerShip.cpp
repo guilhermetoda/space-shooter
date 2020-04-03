@@ -8,6 +8,8 @@
 
 #include "PlayerShip.h"
 #include "NormalBlaster.h"
+#include "GameUtils.h"
+#include "Utils.h"
 
 void PlayerShip::Init(const SpriteSheet& sprite, const std::string& animationsPath, const Vec2D& initialPos, const Vec2D& speed, bool hasExplosion, const std::string& explosionSpriteName)
 {
@@ -16,17 +18,19 @@ void PlayerShip::Init(const SpriteSheet& sprite, const std::string& animationsPa
     SetFowardDirection(playerFoward);
     mSprite.SetAnimation("ship_idle", true);
     
+    mPlayerDirectionBits = 0000;
+    SetMoving(true);
     //Setting Normal Weapon
-    std::unique_ptr<NormalBlaster> blasterPtr = std::make_unique<NormalBlaster>();
+    std::unique_ptr<Weapon> blasterPtr = std::make_unique<NormalBlaster>();
     mCurrentWeapon = std::move(blasterPtr);
     mCurrentWeapon->Init();
-    mCurrentWeapon->mProjectile.Init(&sprite, "bullets_laser_large", Vec2D(0,-1), 200.0f, GetPosition(), 9, 29);
+    mCurrentWeapon->mProjectile.Init(&sprite, "bullets_laser_large", Vec2D(0,-1), 400.0f, GetPosition(), 9, 29);
     
 }
 void PlayerShip::Update(uint32_t dt)
 {
     const AARectangle& aaRect = mSprite.GetBoundingBox();
-    
+    SetVelocity(GetDirections());
     // Check X Boundaries
     if(IsGreaterThanOrEqual(mBoundary.GetTopLeftPoint().GetX(), aaRect.GetTopLeftPoint().GetX()))
     {
@@ -54,14 +58,33 @@ void PlayerShip::Update(uint32_t dt)
             SetVelocity(Vec2D(GetVelocity().GetX(), 0.0f));
         }
     }
+    
+    if ((mPlayerDirectionBits << 2) == 0)
+    {
+        SetAnimation("ship_idle", false);
+    }
+    
     Actor::Update(dt);
     mCurrentWeapon->Update(dt, GetMiddlePosition());
+}
+
+void PlayerShip::SetDirection(unsigned char newDirection)
+{
+    mPlayerDirectionBits |= newDirection;
+}
+
+const Vec2D PlayerShip::GetDirections() const
+{
+    //Moving Up
+    int8_t verticalMovement = (mPlayerDirectionBits & DOWN_DIR_MASK) - (mPlayerDirectionBits & UP_DIR_MASK);
+    int8_t horizontalMovement = (mPlayerDirectionBits & RIGHT_DIR_MASK) - (mPlayerDirectionBits & LEFT_DIR_MASK);
+    std::cout << Vec2D(horizontalMovement, verticalMovement);
+    return Vec2D(Clamp(horizontalMovement, -1, 1), Clamp(verticalMovement, -1, 1));
 }
 
 void PlayerShip::Fire()
 {
     mCurrentWeapon->StartFire();
-    std::cout<< "START FIRE" << std::endl;
 }
 
 void PlayerShip::StopFire()

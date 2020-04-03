@@ -28,6 +28,7 @@ unsigned int GetIndex(unsigned int width, unsigned int r, unsigned int c);
 bool StringCompare(const std::string& a, const std::string& b);
 
 float Clamp(float val, float min, float max);
+int8_t Clamp(int8_t val, int8_t min, int8_t max);
 
 struct Size {
     unsigned int width = 0, height = 0;

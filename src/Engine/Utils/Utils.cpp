@@ -60,3 +60,16 @@ float Clamp(float val, float min, float max)
     }
     return val;
 }
+
+int8_t Clamp(int8_t val, int8_t min, int8_t max)
+{
+    if (val > max)
+    {
+        return max;
+    }
+    else if (val < min)
+    {
+        return min;
+    }
+    return val;
+}

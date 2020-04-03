@@ -15,7 +15,8 @@ void Actor::Init(const SpriteSheet& sprite, const std::string& animationsPath, c
     mSprite.Init(animationsPath, sprite);
     mSprite.SetPosition(initialPos);
     mVelocity = Vec2D::Zero;
-    mMovementSpeed = speed;
+    mMovementDirection = speed;
+    
     
     
     //mExplosionSprite.Init(animationsPath, sprite);
@@ -33,7 +34,7 @@ void Actor::Update(uint32_t dt)
     {
         Vec2D delta = Vec2D::Zero;
 
-        delta = Vec2D(mVelocity.GetX() * mMovementSpeed.GetX(), mVelocity.GetY() * mMovementSpeed.GetY());
+        delta = Vec2D(mVelocity.GetX() * mMovementDirection.GetX(), mVelocity.GetY() * mMovementDirection.GetY());
 
         mDelta += delta * MsToSec(dt);
         mSprite.MoveBy(delta);

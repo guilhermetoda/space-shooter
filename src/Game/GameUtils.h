@@ -17,9 +17,18 @@ enum MovementDirections {
     DIRECTION_RIGHT
 };
 
+// Direction definitions
+static const unsigned char UP_DIR_MASK = 8;
+static const unsigned char DOWN_DIR_MASK = 4;
+static const unsigned char LEFT_DIR_MASK = 2;
+static const unsigned char RIGHT_DIR_MASK = 1;
+
 enum ProjectileOrigin {
     PLAYER = 0,
     ENEMY
 };
+
+
+
 
 #endif /* GameUtils_h */

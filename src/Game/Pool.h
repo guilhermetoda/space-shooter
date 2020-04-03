@@ -8,7 +8,7 @@
 
 #ifndef Pool_h
 #define Pool_h
-#include <deque>
+#include <vector>
 #include <stdint.h>
 
 template <class T>
@@ -17,7 +17,7 @@ class Pool
 public:
     T& AddToPool();
     inline const size_t Size() const { return mPool.size(); }
-    std::deque<T> mPool;
+    std::vector<T> mPool;
 };
 
 template <class T>
